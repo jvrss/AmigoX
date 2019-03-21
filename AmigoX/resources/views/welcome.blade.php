@@ -9,32 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Amigo X - WIP</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <?php // <link rel="stylesheet" href="css/global.css" > ?>
-        <style>
-            html,
-            body {
-                height: 100%;
-                background: linear-gradient(#0e47ab, #fff);
-            }
-
-            .display-center {
-                display: -ms-flexbox;
-                display: flex;
-                -ms-flex-align: center;
-                align-items: center;
-                padding-top: 40px;
-                padding-bottom: 40px;
-            }
-
-            .align-center-screen {
-                width: 100%;
-                max-width: 330px;
-                padding: 15px;
-                margin: auto;
-            }
-
-        </style>
-
+        <link rel="stylesheet" href="css/global.css" >
     </head>
     <body class="display-center">
         <div class="align-center-screen text-white text-center">
