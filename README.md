@@ -5,4 +5,4 @@ seus sorteios de amigo secreto.
 
 Diferente de realizar o sorteio manual com a presença de todas as pessoas, o nosso produto realiza o sorteio automaticamente e permite que os participantes troquem mensagens via web
 
-Link project online: http://34.234.67.226
+Link Projeto online: http://34.234.67.226
