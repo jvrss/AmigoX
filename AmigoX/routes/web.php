@@ -18,3 +18,19 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/groups', function () {
+    return view('group/home');
+});
+
+Route::get('/sessions', function () {
+    return view('sessions/home');
+});
+
+Route::get('/gifts', function () {
+    return view('gifts/home');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
