@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="AmigoX" id="Project_df419a" template="Default" database="MySql" >
 	<schema name="amigox" schemaname="amigox" >
-		<table name="groups" >
+		<table name="draw" >
+			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
+			<column name="id_session" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="id_user_from" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<column name="id_user_to" type="bigint" jt="-5" mandatory="y" unsigned="y" />
+			<index name="pk_sorted_users_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_sorted_users_users" to_schema="amigox" to_table="users" >
+				<fk_column name="id_user_from" pk="id" />
+			</fk>
+			<fk name="fk_sorted_users_sessions" to_schema="amigox" to_table="session" >
+				<fk_column name="id_session" pk="id" />
+			</fk>
+			<fk name="fk_sorted_users_to" to_schema="amigox" to_table="users" >
+				<fk_column name="id_user_to" pk="id" />
+			</fk>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="group" >
 			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
 			<column name="name" type="varchar" length="191" jt="12" />
 			<column name="created_at" type="timestamp" jt="93" >
@@ -13,7 +32,7 @@
 			</index>
 			<storage><![CDATA[engine=InnoDB]]></storage>
 		</table>
-		<table name="invite_group" >
+		<table name="invite" >
 			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
 			<column name="id_group" type="bigint" jt="-5" unsigned="y" />
 			<column name="id_user" type="bigint" jt="-5" unsigned="y" />
@@ -25,7 +44,7 @@
 			<index name="pk_invite_group_id" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_invite_group_groups" to_schema="amigox" to_table="groups" >
+			<fk name="fk_invite_group_groups" to_schema="amigox" to_table="group" >
 				<fk_column name="id_group" pk="id" />
 			</fk>
 			<fk name="fk_invite_group_users" to_schema="amigox" to_table="users" >
@@ -49,7 +68,7 @@
 			</index>
 			<storage><![CDATA[engine=InnoDB]]></storage>
 		</table>
-		<table name="sessions" >
+		<table name="session" >
 			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
 			<column name="id_group" type="bigint" jt="-5" mandatory="y" unsigned="y" />
 			<column name="created_at" type="timestamp" jt="93" >
@@ -59,27 +78,8 @@
 			<index name="pk_sessions_id" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_sessions_groups" to_schema="amigox" to_table="groups" >
+			<fk name="fk_sessions_groups" to_schema="amigox" to_table="group" >
 				<fk_column name="id_group" pk="id" />
-			</fk>
-			<storage><![CDATA[engine=InnoDB]]></storage>
-		</table>
-		<table name="sorted_users" >
-			<column name="id" type="bigint" jt="-5" mandatory="y" unsigned="y" autoincrement="y" />
-			<column name="id_session" type="bigint" jt="-5" mandatory="y" unsigned="y" />
-			<column name="id_user_from" type="bigint" jt="-5" mandatory="y" unsigned="y" />
-			<column name="id_user_to" type="bigint" jt="-5" mandatory="y" unsigned="y" />
-			<index name="pk_sorted_users_id" unique="PRIMARY_KEY" >
-				<column name="id" />
-			</index>
-			<fk name="fk_sorted_users_users" to_schema="amigox" to_table="users" >
-				<fk_column name="id_user_from" pk="id" />
-			</fk>
-			<fk name="fk_sorted_users_sessions" to_schema="amigox" to_table="sessions" >
-				<fk_column name="id_session" pk="id" />
-			</fk>
-			<fk name="fk_sorted_users_to" to_schema="amigox" to_table="users" >
-				<fk_column name="id_user_to" pk="id" />
 			</fk>
 			<storage><![CDATA[engine=InnoDB]]></storage>
 		</table>
@@ -93,7 +93,7 @@
 			<index name="pk_user_group_id" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
-			<fk name="fk_user_group_groups" to_schema="amigox" to_table="groups" >
+			<fk name="fk_user_group_groups" to_schema="amigox" to_table="group" >
 				<fk_column name="id_group" pk="id" />
 			</fk>
 			<fk name="fk_user_group_users" to_schema="amigox" to_table="users" >
@@ -121,12 +121,16 @@
 		</table>
 	</schema>
 	<layout name="Default Layout" id="Layout_299828e" show_relation="columns" >
-		<entity schema="amigox" name="invite_group" color="C1D8EE" x="320" y="512" />
-		<entity schema="amigox" name="groups" color="C1D8EE" x="496" y="288" />
-		<entity schema="amigox" name="sessions" color="C1D8EE" x="736" y="288" />
 		<entity schema="amigox" name="users" color="C1D8EE" x="48" y="288" />
-		<entity schema="amigox" name="sorted_users" color="C1D8EE" x="384" y="48" />
 		<entity schema="amigox" name="notifications" color="C1D8EE" x="640" y="496" />
-		<entity schema="amigox" name="user_group" color="C1D8EE" x="288" y="288" />
+		<entity schema="amigox" name="draw" color="C1D8EE" x="384" y="48" />
+		<entity schema="amigox" name="group" color="C1D8EE" x="496" y="288" />
+		<entity schema="amigox" name="session" color="C1D8EE" x="736" y="288" />
+		<entity schema="amigox" name="user_group" color="C1D8EE" x="288" y="288" >
+			<column name="id" />
+			<column name="id_user" />
+			<column name="id_group" />
+		</entity>
+		<entity schema="amigox" name="invite" color="C1D8EE" x="320" y="512" />
 	</layout>
 </project>
