@@ -11,10 +11,12 @@
                 <div class="card-header">
                     <div class='row'>
                         <div class='col-md-11 pt-2'>
-                            Sorteios
+                            Sessões
                         </div>
                         <div class='col-md-1'>
-                            <button class="btn btn-primary">+</button>
+                            <a class="btn btn-primary" href="{{ url('/sessions/register') }}">
+                                +
+                            </a>
                         </div>
                     </div>
                 </div>

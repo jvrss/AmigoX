@@ -27,6 +27,10 @@ Route::get('/sessions', function () {
     return view('sessions/home');
 });
 
+Route::get('/sessions/register', function () {
+    return view('sessions/register');
+});
+
 Route::get('/gifts', function () {
     return view('gifts/home');
 });

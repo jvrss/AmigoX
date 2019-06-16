@@ -8,7 +8,7 @@
                     <tr>
                         <th scope="row">
                             <a class="btn btn-link" href="{{ url('/sessions') }}">
-                                {{ __('Realizar Sorteio') }}
+                                {{ __('Sessões') }}
                             </a>
                         </th>
 
