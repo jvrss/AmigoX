@@ -18,6 +18,11 @@ class CreateInvitesTable extends Migration
             $table->string('message');
             $table->boolean('accepted');
             $table->timestamps();
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('user_id');
+                      
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
