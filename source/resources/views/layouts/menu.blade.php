@@ -23,7 +23,7 @@
                     <tr>
                         <th scope="row">
                             <a class="btn btn-link" href="{{ url('/gifts') }}">
-                                {{ __('Definir Presentes') }}
+                                {{ __('Comprar Presentes') }}
                             </a>
                         </th>
                     </tr>

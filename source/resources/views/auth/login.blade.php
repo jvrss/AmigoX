@@ -8,6 +8,14 @@
                 <div class="card-header text-center">{{ __('AmigoX - Login') }}</div>
 
                 <div class="card-body">
+                    
+                    @if(Session::has('message'))
+                        <div class="alert alert-warning mb-3" style="max-width: 85%; margin: 0 auto;" role="alert">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
+                        
+                       
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -38,7 +46,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -50,6 +57,8 @@
                                 </div>
                             </div>
                         </div>
+                        
+                         
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

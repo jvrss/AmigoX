@@ -35,6 +35,14 @@ Route::get('/gifts', function () {
     return view('gifts/home');
 });
 
+Route::get('/notifications', function () {
+    return view('notifications/home');
+});
+
+Route::get('/messages', function () {
+    return view('messages/home');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
