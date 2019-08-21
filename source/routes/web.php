@@ -19,16 +19,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/groups', function () {
-    return view('group/home');
-});
-
-Route::get('/sessions', function () {
-    return view('sessions/home');
-});
-
-Route::get('/sessions/register', function () {
-    return view('sessions/register');
+Route::get('/session/register', function () {
+    return view('session/register');
 });
 
 Route::get('/gifts', function () {
@@ -42,6 +34,9 @@ Route::get('/notifications', function () {
 Route::get('/messages', function () {
     return view('messages/home');
 });
+
+Route::resource('session', 'SessionController');
+Route::resource('group', 'GroupController');
 
 Auth::routes();
 

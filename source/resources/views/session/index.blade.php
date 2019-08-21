@@ -14,7 +14,7 @@
                             Sessões
                         </div>
                         <div class='col-md-1'>
-                            <a class="btn btn-primary" href="{{ url('/sessions/register') }}">
+                            <a class="btn btn-primary" href="{{ url('/session/create') }}">
                                 +
                             </a>
                         </div>
@@ -31,21 +31,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($sessions as $k=>$session)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
+                                <th scope="row">{{$session->id}}</th>
+                                <td>{{$session->name}}</td>
                                 <td>Otto</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

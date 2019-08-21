@@ -7,7 +7,7 @@
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <a class="btn btn-link" href="{{ url('/sessions') }}">
+                            <a class="btn btn-link" href="{{ url('/session') }}">
                                 {{ __('Sessões') }}
                             </a>
                         </th>
@@ -15,7 +15,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a class="btn btn-link" href="{{ url('/groups') }}">
+                            <a class="btn btn-link" href="{{ url('/group') }}">
                                 {{ __('Grupos') }}
                             </a>
                         </th>
