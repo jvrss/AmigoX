@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
     
+    public $fillable = ['name', 'group_id'];
+    
     public function group()
     {
         return $this->belongsTo('App\Group');

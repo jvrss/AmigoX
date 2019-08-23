@@ -26,7 +26,7 @@ class GroupController extends Controller
     
     public function store(Request $request)
     {
-        Group::create($request->all()->except('_token'));
+        Group::create($request->only('name'));
         return redirect()->route('group.index');
     }
 }

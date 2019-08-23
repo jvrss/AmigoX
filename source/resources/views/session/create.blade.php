@@ -33,12 +33,10 @@
                         <div class="form-group row">
                             <label for="group" class="col-md-3 col-form-label text-md-right">{{ __('Grupo') }}:</label>  
                             <div class="col-md-7">
-                                <select class="form-control{{ $errors->has('group') ? ' is-invalid' : '' }}" name="group" id="group" required>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select class="form-control{{ $errors->has('group') ? ' is-invalid' : '' }}" name="group_id" id="group" required>
+                                    @foreach ($groups as $k=>$group)
+                                    <option value="{{$group->id}}">{{$group->name}}</option>
+                                    @endforeach
                                 </select>
                                 @if ($errors->has('group'))
                                 <span class="invalid-feedback" role="alert">

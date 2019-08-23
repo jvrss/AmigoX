@@ -35,7 +35,17 @@
                             <tr>
                                 <th scope="row">{{$session->id}}</th>
                                 <td>{{$session->name}}</td>
-                                <td>Otto</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('session.show', ['id'=>$session->id]) }}">
+                                        Vis
+                                    </a>
+                                    <a class="btn btn-primary" href="{{ route('session.edit', ['id'=>$session->id]) }}">
+                                        Edi
+                                    </a>
+                                    <a class="btn btn-primary" href="{{ route('session.destroy', ['id'=>$session->id]) }}">
+                                        Rem
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

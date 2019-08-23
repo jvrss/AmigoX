@@ -33,9 +33,19 @@
                         <tbody>
                             @foreach ($groups as $k=>$group)
                             <tr>
-                                <th scope="row">{{$group->id}}</th>
+                                <th scope="row"><a href="#">{{$group->id}}</th>
                                 <td>{{$group->name}}</td>
-                                <td>Otto</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('group.show', ['id'=>$group->id]) }}">
+                                        Vis
+                                    </a>
+                                    <a class="btn btn-primary" href="{{ route('group.edit', ['id'=>$group->id]) }}">
+                                        Edi
+                                    </a>
+                                    <a class="btn btn-primary" href="{{ route('group.destroy', ['id'=>$group->id]) }}">
+                                        Rem
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
