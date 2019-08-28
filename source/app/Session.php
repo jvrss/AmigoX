@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
     
-    public $fillable = ['name', 'group_id'];
+    protected $fillable = ['name', 'group_id'];
     
     public function group()
     {

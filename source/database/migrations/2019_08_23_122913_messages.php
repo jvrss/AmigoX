@@ -13,8 +13,15 @@ class Messages extends Migration
      */
     public function up()
     {
-        $table->bigIncrements('id');
-        $table->timestamps();
+        
+        Schema::create('messages', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+            $table->string('message');
+            $table->timestamp('read_at')->nullable();
+        });
+        
+        
     }
 
     /**

@@ -33,5 +33,12 @@ class SessionController extends Controller
         Session::create(collect($request->all())->except('_token')->toArray());
         return redirect()->route('session.index');
     }
+    
+    public function show($id){
+        
+        $session = Session::find($id);
+        
+        return view('session.show', ['session'=> $session]);
+    }
 
 }

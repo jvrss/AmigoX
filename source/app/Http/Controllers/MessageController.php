@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Message;
 
 class MessageController extends Controller
 {
@@ -13,8 +14,8 @@ class MessageController extends Controller
     
     public function index()
     {
-        $sessions = Message::all();
+        $messages = Message::all();
         
-        return view ('session.index', ['sessions'=>$sessions]);
+        return view ('message.index', ['messages'=>$messages]);
     }
 }

@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/messages') }}" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a class="nav-link" href="{{ url('/message') }}" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Mensagens
                                 </a>
                             </li>
