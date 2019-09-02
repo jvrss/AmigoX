@@ -33,8 +33,10 @@ class GroupController extends Controller
     public function show($id) {
 
         $group = Group::find($id);
+        
+        $members = 0;
 
-        return view('group.show', ['group' => $group]);
+        return view('group.show', ['group' => $group, 'members' => $members]);
     }
     
     public function edit($id) {

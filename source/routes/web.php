@@ -39,6 +39,7 @@ Route::resource('session', 'SessionController');
 Route::resource('group', 'GroupController');
 Route::resource('message', 'MessageController');
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
