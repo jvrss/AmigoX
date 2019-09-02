@@ -43,3 +43,7 @@ Route::resource('message', 'MessageController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/messages', function () {
+    return "Hello ";
+});

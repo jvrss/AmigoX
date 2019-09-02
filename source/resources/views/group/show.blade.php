@@ -25,11 +25,11 @@
                         <input value="{{$members}}" type="text" class="form-control" disabled >
                     </div>
                     <div class="form-group row ">
-                        <form class="col-6" action="{{ route('group.update', ['id'=>$group->id]) }}" method="POST">
-                            <a class="btn btn-primary" href="{{ route('group.addMembers') }}">
+                        <form class="col-6" action="{{ route('group.update', ['id'=> $group->id]) }}" method="POST">
+                            <a class="btn btn-primary" href="/group/addMembersasd">
                                 {{ __('Adicionar Membros') }}
                             </a>
-                            <a class="btn btn-primary" href="{{ route('group.edit', ['id'=>$group->id]) }}">
+                            <a class="btn btn-primary" href="{{ route('group.edit', ['id'=> $group->id]) }}">
                                 {{ __('Editar') }}
                             </a>
                             @csrf
