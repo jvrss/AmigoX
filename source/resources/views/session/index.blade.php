@@ -33,7 +33,7 @@
                         <tbody>
                             @foreach ($sessions as $k=>$session)
                             <tr>
-                                <th scope="row">{{$session->id}}</th>
+                                <th scope="row"><a href="{{ route('session.show', ['id'=>$session->id]) }}">{{$session->id}}</th>
                                 <td>{{$session->name}}</td>
                                 <td class="row">
                                     <a class="btn btn-primary mr-1" href="{{ route('session.show', ['id'=>$session->id]) }}">

@@ -29,4 +29,33 @@ class GroupController extends Controller
         Group::create($request->only('name'));
         return redirect()->route('group.index');
     }
+    
+    public function show($id) {
+
+        $group = Group::find($id);
+
+        return view('group.show', ['group' => $group]);
+    }
+    
+    public function edit($id) {
+
+        $group = Group::find($id);
+
+        return view('group.edit', ['group' => $group]);
+    }
+    
+    public function update(Request $request, $id) {
+
+        $group = Group::find($id);
+        $group->update(collect($request->all())->except('_token')->toArray());
+        return redirect()->route('group.index');
+    }
+
+    public function destroy($id) {
+
+        $session = Session::find($id);
+        $session->delete();
+        return redirect()->route('group.index');
+        
+    }
 }
