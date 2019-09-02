@@ -46,7 +46,7 @@
                             </div>
                         </div>   
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-12 text-center   ">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Criar') }}
                                 </button>

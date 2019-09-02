@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/joaosilva/personal/AmigoX/source/resources/views/session/show.blade.php</file>
-            <file>file:/home/joaosilva/personal/AmigoX/source/app/Group.php</file>
+            <file>file:/home/joaosilva/personal/AmigoX/source/resources/views/session/index.blade.php</file>
+            <file>file:/home/joaosilva/personal/AmigoX/source/resources/views/session/create.blade.php</file>
             <file>file:/home/joaosilva/personal/AmigoX/source/app/Http/Controllers/SessionController.php</file>
-            <file>file:/home/joaosilva/personal/AmigoX/source/app/Session.php</file>
         </group>
     </open-files>
 </project-private>

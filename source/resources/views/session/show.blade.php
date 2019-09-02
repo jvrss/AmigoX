@@ -24,18 +24,18 @@
                         <label for="exampleFormControlInput1">Grupo:</label>
                         <input value="{{$session->group->name}}" type="text" class="form-control" disabled >
                     </div>
-                    <div class="form-group row">
-                        <div class="col-12 offset-md-10">
-                            <a class="btn btn-primary" href="{{ route('session.update', ['id'=>$session=>id]) }}">
+                    <div class="form-group row ">
+                        <form class="col-6" action="{{ route('session.update', ['id'=>$session->id]) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ route('session.edit', ['id'=>$session->id]) }}">
                                 {{ __('Editar') }}
                             </a>
-                        </div>
-                        <div class="col-12 offset-md-10">
-                            <a class="btn btn-primary" href="{{ route('session.update', ['id'=>$session->id]) }}">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-primary">
                                 {{ __('Excluir') }}
-                            </a>
-                        </div>
-                        <div class="col-12 offset-md-10">
+                            </button>
+                        </form>
+                        <div class="col-6 text-right">
                             <a class="btn btn-primary" href="{{ url('/session') }}">
                                 {{ __('Voltar') }}
                             </a>

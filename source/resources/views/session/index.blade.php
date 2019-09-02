@@ -35,16 +35,20 @@
                             <tr>
                                 <th scope="row">{{$session->id}}</th>
                                 <td>{{$session->name}}</td>
-                                <td>
-                                    <a class="btn btn-primary" href="{{ route('session.show', ['id'=>$session->id]) }}">
+                                <td class="row">
+                                    <a class="btn btn-primary mr-1" href="{{ route('session.show', ['id'=>$session->id]) }}">
                                         Vis
                                     </a>
-                                    <a class="btn btn-primary" href="{{ route('session.edit', ['id'=>$session->id]) }}">
+                                    <a class="btn btn-primary mr-1" href="{{ route('session.edit', ['id'=>$session->id]) }}">
                                         Edi
                                     </a>
-                                    <a class="btn btn-primary" href="{{ route('session.destroy', ['id'=>$session->id]) }}">
-                                        Rem
-                                    </a>
+                                    <form    action="{{ route('session.update', ['id'=>$session->id]) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Excluir') }}
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
