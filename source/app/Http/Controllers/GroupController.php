@@ -34,7 +34,7 @@ class GroupController extends Controller
 
         $group = Group::find($id);
         
-        $members = 0;
+        $members = $group->users;
 
         return view('group.show', ['group' => $group, 'members' => $members]);
     }
@@ -47,14 +47,12 @@ class GroupController extends Controller
     }
     
     public function update(Request $request, $id) {
-
         $group = Group::find($id);
         $group->update(collect($request->all())->except('_token')->toArray());
         return redirect()->route('group.index');
     }
 
     public function destroy($id) {
-
         $group = Group::find($id);
         $group->delete();
         return redirect()->route('group.index');
