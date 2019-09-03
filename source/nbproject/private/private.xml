@@ -5,6 +5,8 @@
         <group>
             <file>file:/home/joaosilva/personal/AmigoX/source/routes/web.php</file>
             <file>file:/home/joaosilva/personal/AmigoX/source/resources/views/group/show.blade.php</file>
+            <file>file:/home/joaosilva/personal/AmigoX/source/app/Http/Controllers/MemberController.php</file>
+            <file>file:/home/joaosilva/personal/AmigoX/source/app/Group.php</file>
             <file>file:/home/joaosilva/personal/AmigoX/source/app/Http/Controllers/GroupController.php</file>
         </group>
     </open-files>

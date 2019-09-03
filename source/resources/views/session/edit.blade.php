@@ -50,7 +50,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Salvar') }}
                                 </button>
-                                <a class="btn btn-primary" href="{{ url('/session') }}">
+                                <a class="btn btn-primary" href="{{ route('session.show', ['id'=>$session->id]) }}">
                                     {{ __('Voltar') }}
                                 </a>
                             </div>

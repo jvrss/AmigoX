@@ -55,8 +55,8 @@ class GroupController extends Controller
 
     public function destroy($id) {
 
-        $session = Session::find($id);
-        $session->delete();
+        $group = Group::find($id);
+        $group->delete();
         return redirect()->route('group.index');
         
     }

@@ -38,12 +38,12 @@ Route::get('/messages', function () {
 Route::resource('session', 'SessionController');
 Route::resource('group', 'GroupController');
 Route::resource('message', 'MessageController');
+Route::resource('member', 'MemberController');
+
+Route::get('group/addMembers', 'GroupController@addMembers')->name('group.addMembers');
+
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/messages', function () {
-    return "Hello ";
-});

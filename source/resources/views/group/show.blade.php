@@ -25,8 +25,8 @@
                         <input value="{{$members}}" type="text" class="form-control" disabled >
                     </div>
                     <div class="form-group row ">
-                        <form class="col-6" action="{{ route('group.update', ['id'=> $group->id]) }}" method="POST">
-                            <a class="btn btn-primary" href="/group/addMembersasd">
+                        <form class="col-6" action="{{ route('group.destroy', ['id'=> $group->id]) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ route('member.index', ['group_id'=> $group->id]) }}">
                                 {{ __('Adicionar Membros') }}
                             </a>
                             <a class="btn btn-primary" href="{{ route('group.edit', ['id'=> $group->id]) }}">
