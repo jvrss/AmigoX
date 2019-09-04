@@ -8,22 +8,33 @@ use App\User;
 
 class MemberController extends Controller
 {
+    
     function __construct() {
         
         $this->middleware('auth');
         
     }
     
-    public function edit($id) {
-
-        $members = Group::find($id)->users;
-        $users = User::all();
+    public function show($userId) {
         
-        return view('member.edit', ['members' => $members, 'users' => $users, 'member_id' => $id]);
+        $user = User::find($userId);
+        
+        $group_id = session('group_id');
+        $group = Group::find($group_id);
+
+        return view('member.show', ['user' => $user, 'group' => $group]);
     }
     
-    public function update(Request $request, $id) {
-
+    public function edit($id) {
+        session(['group_id' => $id]);
+        
+        $group = Group::find($id);
+        $users = User::all();
+        
+        return view('member.edit', ['group' => $group, 'users' => $users, 'member_id' => $id]);
+    }
+    
+    public function update($id) {
 //        $group = Group::find($id);
 //        $group->update(collect($request->all())->except('_token')->toArray());
 //        return redirect()->route('group.index');

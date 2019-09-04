@@ -16,17 +16,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="exampleFormControlInput1">Nome:</label>
                         <input value="{{$group->name}}" type="text" class="form-control" disabled >
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">{{$members->count()}} Membro(s):</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                            @foreach ($members as $k=>$member)
-                            <option>1</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="form-group row ">
                         <div class="col-6 ml-1 row" >
@@ -49,6 +41,31 @@
                                 {{ __('Voltar') }}
                             </a>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">{{$group->users->count()}} Membro(s):</label>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Opções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($group->users as $k=>$member)
+                                <tr>
+                                    <th scope="row"><a href="{{ route('group.show', ['id'=>$member->id]) }}">{{$member->id}}</th>
+                                    <td>{{$member->name}}</td>
+                                    <td class="row">
+                                        <a class="btn btn-primary mr-1" href="{{ route('user.show', ['id'=>$member->id]) }}">
+                                            Vis
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
