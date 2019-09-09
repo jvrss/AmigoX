@@ -55,12 +55,21 @@
                             <tbody>
                                 @foreach ($group->users as $k=>$member)
                                 <tr>
-                                    <th scope="row"><a href="{{ route('group.show', ['id'=>$member->id]) }}">{{$member->id}}</th>
+                                    <th scope="row"><a href="{{ route('member.show', ['id'=>$member->id]) }}">{{$member->id}}</th>
                                     <td>{{$member->name}}</td>
                                     <td class="row">
-                                        <a class="btn btn-primary mr-1" href="{{ route('user.show', ['id'=>$member->id]) }}">
+                                        <a class="btn btn-primary mr-2" href="{{ route('member.show', ['id'=>$member->id]) }}">
                                             Vis
                                         </a>
+                                        <form action="{{ route('member.destroy', ['id' => -1]) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="group_id" value="{{$group->id}}">
+                                            <input type="hidden" name="user_id" value="{{$member->id}}">
+                                            <button type="submit" class="btn btn-primary">
+                                                {{ __('Rem') }}
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

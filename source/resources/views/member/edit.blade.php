@@ -28,14 +28,16 @@
                             <tr>
                                 <th scope="row">{{$user->name}}</th>
                                 <td class="row">
+                                    <a class="btn btn-primary mr-2" href="{{ route('member.show', ['id'=>$user->id]) }}">
+                                        Vis
+                                    </a>
                                     @if ($group->users->contains($user->id))
-
                                     <form action="{{ route('member.destroy', ['id' => -1]) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="group_id" value="{{$group->id}}">
                                         <input type="hidden" name="user_id" value="{{$user->id}}">
-                                        <button type="submit" class="btn btn-primary mr-2">
+                                        <button type="submit" class="btn btn-primary">
                                             {{ __('Rem') }}
                                         </button>
                                     </form>
@@ -44,14 +46,11 @@
                                         @csrf
                                         <input type="hidden" name="group_id" value="{{$group->id}}">
                                         <input type="hidden" name="user_id" value="{{$user->id}}">
-                                        <button type="submit" class="btn btn-primary mr-2">
+                                        <button type="submit" class="btn btn-primary">
                                             {{ __('Add') }}
                                         </button>
                                     </form>
                                     @endif
-                                    <a class="btn btn-primary mr-1" href="{{ route('member.show', ['id'=>$user->id]) }}">
-                                        Vis
-                                    </a>
                                 </td>
                             </tr>
                             @endforeach

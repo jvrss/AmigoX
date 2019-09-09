@@ -47,7 +47,7 @@ class GroupController extends Controller
     public function update(Request $request, $id) {
         $group = Group::find($id);
         $group->update(collect($request->all())->except('_token')->toArray());
-        return redirect()->route('group.index');
+        return view('group.show', ['group' => $group]);
     }
 
     public function destroy($id) {
