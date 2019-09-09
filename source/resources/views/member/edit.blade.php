@@ -30,9 +30,11 @@
                                 <td class="row">
                                     @if ($group->users->contains($user->id))
 
-                                    <form action="{{ route('member.destroy', ['group_id'=> $group->id, 'user_id'=> $user->id]) }}" method="POST">
+                                    <form action="{{ route('member.destroy', ['id' => -1]) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="group_id" value="{{$group->id}}">
+                                        <input type="hidden" name="user_id" value="{{$user->id}}">
                                         <button type="submit" class="btn btn-primary mr-2">
                                             {{ __('Rem') }}
                                         </button>

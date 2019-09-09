@@ -43,10 +43,18 @@ class MemberController extends Controller {
         $group_id = $request->get("group_id");
         $user_id = $request->get("user_id");
 
-        $user = User::find($user_id);
         $group = Group::find($group_id);
-
         $group->users()->attach($user_id);
+
+        return view('group.show', ['group' => $group]);
+    }
+
+    public function destroy(Request $request, $id) {
+        $group_id = $request->get("group_id");
+        $user_id = $request->get("user_id");
+        
+        $group = Group::find($group_id);
+        $group->users()->detach($user_id);
         
         return view('group.show', ['group' => $group]);
     }

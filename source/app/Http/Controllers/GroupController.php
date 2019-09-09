@@ -54,6 +54,5 @@ class GroupController extends Controller
         $group = Group::find($id);
         $group->delete();
         return redirect()->route('group.index');
-        
     }
 }
