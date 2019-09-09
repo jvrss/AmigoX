@@ -27,16 +27,28 @@ class MemberController extends Controller {
         session(['group_id' => $group_id]);
 
         $group = Group::find($group_id);
-        
-        $users = User::where("id", "<>", "");
 
-        return view('member.edit', ['group' => $group, 'users' => $users, 'member_id' => $group_id]);
+        $users = User::all();
+
+        return view('member.edit', ['group' => $group, 'users' => $users]);
     }
 
     public function update($id) {
 //        $group = Group::find($id);
 //        $group->update(collect($request->all())->except('_token')->toArray());
 //        return redirect()->route('group.index');
+    }
+
+    public function store(Request $request) {
+        $group_id = $request->get("group_id");
+        $user_id = $request->get("user_id");
+
+        $user = User::find($user_id);
+        $group = Group::find($group_id);
+
+        $group->users()->attach($user_id);
+        
+        return view('group.show', ['group' => $group]);
     }
 
 }

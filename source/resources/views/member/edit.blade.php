@@ -28,6 +28,25 @@
                             <tr>
                                 <th scope="row">{{$user->name}}</th>
                                 <td class="row">
+                                    @if ($group->users->contains($user->id))
+
+                                    <form action="{{ route('member.destroy', ['group_id'=> $group->id, 'user_id'=> $user->id]) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-primary mr-2">
+                                            {{ __('Rem') }}
+                                        </button>
+                                    </form>
+                                    @else
+                                    <form method="POST" action="{{ route('member.store') }}">
+                                        @csrf
+                                        <input type="hidden" name="group_id" value="{{$group->id}}">
+                                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                                        <button type="submit" class="btn btn-primary mr-2">
+                                            {{ __('Add') }}
+                                        </button>
+                                    </form>
+                                    @endif
                                     <a class="btn btn-primary mr-1" href="{{ route('member.show', ['id'=>$user->id]) }}">
                                         Vis
                                     </a>
