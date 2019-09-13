@@ -22,7 +22,13 @@
                     </div>
                     <div class="form-group row ">
                         <div class="col-6 text-right">
-                            <a class="btn btn-primary" href="{{ route('member.edit', ['id'=> $group->id]) }}">
+                            <a class="btn btn-primary" href="
+                               @if ($path == 'addMember')
+                                {{route('member.edit', ['id'=> $group->id])}}
+                               @else
+                                {{route('group.show', ['id'=> $group->id])}}
+                               @endif
+                               ">
                                 {{ __('Voltar') }}
                             </a>
                         </div>

@@ -40,6 +40,7 @@ Route::resource('group', 'GroupController');
 Route::resource('message', 'MessageController');
 Route::resource('member', 'MemberController');
 Route::resource('user', 'UserController');
+Route::resource('draw', 'DrawController');
 
 Route::get('group/addMembers', 'GroupController@addMembers')->name('group.addMembers');
 

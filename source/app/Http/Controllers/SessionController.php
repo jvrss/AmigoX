@@ -48,7 +48,7 @@ class SessionController extends Controller {
 
         $session = Session::find($id);
         $session->update(collect($request->all())->except('_token')->toArray());
-        return redirect()->route('session.index');
+        return view('session.show', ['session' => $session]);
     }
 
     public function destroy($id) {

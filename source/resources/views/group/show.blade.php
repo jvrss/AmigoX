@@ -55,10 +55,10 @@
                             <tbody>
                                 @foreach ($group->users as $k=>$member)
                                 <tr>
-                                    <th scope="row"><a href="{{ route('member.show', ['id'=>$member->id]) }}">{{$member->id}}</th>
+                                    <th scope="row"><a href="{{ route('member.show', ['id'=>$member->id, 'path'=>'index']) }}">{{$member->id}}</th>
                                     <td>{{$member->name}}</td>
                                     <td class="row">
-                                        <a class="btn btn-primary mr-2" href="{{ route('member.show', ['id'=>$member->id]) }}">
+                                        <a class="btn btn-primary mr-2" href="{{ route('member.show', ['id'=>$member->id, 'path'=>'index']) }}">
                                             Vis
                                         </a>
                                         <form action="{{ route('member.destroy', ['id' => -1]) }}" method="POST">

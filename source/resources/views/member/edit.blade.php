@@ -28,7 +28,7 @@
                             <tr>
                                 <th scope="row">{{$user->name}}</th>
                                 <td class="row">
-                                    <a class="btn btn-primary mr-2" href="{{ route('member.show', ['id'=>$user->id]) }}">
+                                    <a class="btn btn-primary mr-2" href="{{ route('member.show', ['id'=>$user->id, 'path'=>'addMember']) }}">
                                         Vis
                                     </a>
                                     @if ($group->users->contains($user->id))

@@ -13,14 +13,16 @@ class MemberController extends Controller {
         $this->middleware('auth');
     }
 
-    public function show($userId) {
+    public function show(Request $request, $userId) {
 
+        $path = $request->get('path');
+        
         $user = User::find($userId);
 
         $group_id = session('group_id');
         $group = Group::find($group_id);
 
-        return view('member.show', ['user' => $user, 'group' => $group]);
+        return view('member.show', ['user' => $user, 'group' => $group, 'path' => $path]);
     }
 
     public function edit($group_id) {
@@ -31,12 +33,6 @@ class MemberController extends Controller {
         $users = User::all();
 
         return view('member.edit', ['group' => $group, 'users' => $users]);
-    }
-
-    public function update($id) {
-//        $group = Group::find($id);
-//        $group->update(collect($request->all())->except('_token')->toArray());
-//        return redirect()->route('group.index');
     }
 
     public function store(Request $request) {
