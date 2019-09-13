@@ -21,54 +21,38 @@ class DrawController extends Controller {
             return redirect()->route('session.show', ['session' => $session]);
         }
 
-        $userList = collect($group->users);
-        $countUsers = $userList->count();
-
-        if ($countUsers == 2) {
-            $sortedUsers = $userList->random(2);
-
-            $from = $sortedUsers->get(0)->id;
-            $to = $sortedUsers->get(1)->id;
-
-            $draw = new Draw;
-            $draw->session_id = $session_id;
-            $draw->from_id = $from;
-            $draw->to_id = $to;
-            //$draw->save();
-
-            $from = $sortedUsers->get(1)->id;
-            $to = $sortedUsers->get(0)->id;
-
-            $draw = new Draw;
-            $draw->session_id = $session_id;
-            $draw->from_id = $from;
-            $draw->to_id = $to;
-            //$draw->save();
-        }
+        $giveList = collect($group->users);
+        $receivedList = collect($group->users);
+        
+        $countUsers = $giveList->count();
+        
 
         for ($i = 0; $i < $countUsers; $i++) {
             
-            $sortedUsers = $userList->random(2);
-
-            $from = $sortedUsers->get(0)->id;
-            $to = $sortedUsers->get(1)->id;
+            $sortedFrom = $giveList->random();
+            $sortedTo = $receivedList->random();
+            
+            while($sortedFrom->id == $sortedTo->id){
+                $sortedTo = $receivedList->random();
+            }
+            
+            $from = $sortedFrom->id;
+            $to = $sortedTo->id;
 
             $draw = new Draw;
             $draw->session_id = $session_id;
             $draw->from_id = $from;
             $draw->to_id = $to;
-            //$draw->save();
+            $draw->save();
             
-            $userList->forget($sortedUsers->get(1));
+            $giveList->forget($giveList->search($sortedFrom));
+            $receivedList->forget($receivedList->search($sortedTo));
             
         }
         
+        $session->sorted = true;
+        $session->save();
         
-
-        dd($userList);
-
-
-
         return redirect()->route('session.show', ['session' => $session]);
     }
 

@@ -17,6 +17,7 @@ class CreateSessionsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
+            $table->boolean('sorted')->default(false);
             $table->unsignedBigInteger('group_id')->unsigned();
             
             $table->foreign('group_id')->references('id')->on('groups');

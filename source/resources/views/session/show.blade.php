@@ -33,15 +33,15 @@
                         <div class="col-1 mr-2">
                             <form action="{{ route('draw.store', ['id'=>$session->id]) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" @if($session->sorted) disabled @endif>
                                     {{ __('Sortear') }}
                                 </button>
                             </form>
                         </div>
                         <div class="col-1 mr-2">
-                            <a class="btn btn-primary" href="{{ route('session.edit', ['id'=>$session->id]) }}">
+                            <button class="btn btn-primary" onclick="window.location.href='{{ route('session.edit', ['id'=>$session->id]) }}';" @if($session->sorted) disabled @endif>
                                 {{ __('Editar') }}
-                            </a>
+                            </button>
                         </div>
                         <div class="col-1">
                             <form action="{{ route('session.update', ['id'=>$session->id]) }}" method="POST">
