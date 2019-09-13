@@ -18,8 +18,13 @@ class SessionController extends Controller {
         return view('session.index', ['sessions' => $sessions]);
     }
 
-    public function create() {
+    public function create(Request $request) {
         $groups = Group::all();
+        
+        if($groups->isEmpty()){
+            $request->session()->flash('message', 'É necessário ter algum grupo criado para criar uma sessão.');
+            return redirect()->route('session.index');
+        }
 
         return view('session.create', ['groups' => $groups]);
     }

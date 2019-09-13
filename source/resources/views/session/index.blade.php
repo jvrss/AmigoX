@@ -7,6 +7,11 @@
         @include('layouts.menu')
 
         <div class="col-md-9">
+            @if(Session::has('message'))
+            <div class="alert alert-warning mb-3 mt-3" style="max-width: 85%; margin: 0 auto;" role="alert">
+                {{ Session::get('message') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     <div class='row'>
@@ -20,7 +25,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
@@ -39,26 +43,26 @@
                                     <a class="btn btn-primary mr-1" href="{{ route('session.show', ['id'=>$session->id]) }}">
                                         Vis
                                     </a>
-                                    <a class="btn btn-primary mr-1" href="{{ route('session.edit', ['id'=>$session->id]) }}">
-                                        Edi
-                                    </a>
-                                    <form    action="{{ route('session.update', ['id'=>$session->id]) }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Excluir') }}
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                    <button class="btn btn-primary mr-1" onclick="window.location.href ='{{ route('session.edit', ['id'=>$session->id]) }}';" @if($session->sorted) disabled @endif>
+                                            Edi
+                                </button>
+                                <form    action="{{ route('session.update', ['id'=>$session->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Excluir') }}
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 @endsection
 
