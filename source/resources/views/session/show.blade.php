@@ -73,12 +73,8 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Ganhador:</label>
-                        <input value="Não sorteado" type="text" class="form-control" disabled >
-                    </div>
-                    <div class="form-group">
                         <label for="exampleFormControlInput1">Data do Sorteio:</label>
-                        <input value="Não sorteado" type="{{false ? 'date' : 'text'}}" class="form-control" disabled >
+                        <input value="{{$draw ? $draw  : 'Não sorteado'}}" type="{{$draw ? 'date' : 'text'}}" class="form-control" disabled >
                     </div>
                 </div>
             </div>

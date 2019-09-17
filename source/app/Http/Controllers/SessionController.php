@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Session;
 use App\Group;
+use App\Draw;
 
 class SessionController extends Controller {
 
@@ -37,8 +38,10 @@ class SessionController extends Controller {
     public function show($id) {
 
         $session = Session::find($id);
-
-        return view('session.show', ['session' => $session]);
+        $draw = Draw::where('session_id', $id)->get()->first();
+        $draw = date('Y-m-d', strtotime($draw->created_at));
+        
+        return view('session.show', ['session' => $session, 'draw' => $draw]);
     }
 
     public function edit($id) {
